@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Plot Seeds</title>
+	<script>
+function pick(arr){
+    var total = arr.length;
+    var n = Math.floor(Math.random()*total);
+    return arr[n];
+}
+function logline(){
+  var foeList=document.querySelector('input[name = "foeSrc"]:checked').value;
+	if (foeList === 'icons'){
+		var foe = pick(iconsFoes);
+	} else {
+		foe = '"'+pick(archFoes)+'" character';
+		var pronoun = (/"[AEIOU]/.test(foe)) ? 'An':'A';
+		foe = pronoun+' '+foe;
+	}
+  var str = foe+' plans to ';
+  str += pick(verbs) + ' ' + pick(objects);
+  str += ' (<em>complication:</em> '+pick(but)+';';
+  str += ' <em>important location</em>: '+pick(places)+')';
+  document.getElementById('seedDisplay').innerHTML = str;
+}
+var verbs = [
+	'attack',
+	'steal',
+	'manipulate',
+	'murder',
+	'control',
+	'destroy',
+	'create',
+	'infiltrate',
+	'ransom',
+	'rob',
+	'extort',
+	'seize',
+	'escape',
+	'conquer',
+	'study',
+	'possess',
+	'eliminate',
+	'capture'
+];
+var objects = [
+	'a rival',
+	'a creature',
+	'a country',
+	'people',
+	'a city',
+	'an object',
+	'an artifact',
+	'the world',
+	'a hero (or Team)',
+	'a treasure',
+	'a heroe\'s loved one',
+	'wealth',
+	'a power',
+	'a celebrity',
+	'a head of state',
+	'an invention',
+	'a resource',
+	'an enemy'
+];
+var but = [
+	'a betrayal!',
+	'government interference',
+	'there\'s a power struggle',
+	'mistaken identity',
+	'legal trouble for the PCs',
+	'a love interest is involved',
+	'only a PC can achieve some part of it',
+	'ambush!',
+	'money talks',
+	'somebody is temporarily insane',
+	'somebody is missing',
+	'there\'s a trap',
+	'competition',
+	'military influence',
+	'surrounding innocents',
+	'gangs',
+	'amnesia',
+	'natural obstacle (such as weather)'
+];
+var iconsFoes = [
+  'ConfederApe',
+  'Count Malocchio',
+  'Creeper',
+  'Gila-Master',
+  'Grudge',
+  'Speed Demon',
+  'Troll',
+  'Ultra-Mind',
+  'War-Bride'
+];
+var archFoes = [
+	'Assassin',
+	'Blue Collar',
+	'Conqueror',
+	'Crime Boss',
+	'Cult Leader',
+	'Dark Mirror',
+	'Devil',
+	'Dominator',
+	'Doppelganger',
+	'Dominator',
+	'Evil CEO',
+	'Evil Twin',
+	'Faceless Minion Organization',
+	'Fallen Hero',
+	'Force of Nature',
+	'Foreigner',
+	'Girlfriend Gone Bad',
+	'Gladiator',
+	'Heir to Lovecraft',
+	'Hero In Disguise',
+	'Imp',
+	'Kid Playing With Fire',
+	'Mastermind',
+	'Monstrosity',
+	'Nazi',
+	'Nemesis',
+	'Nihilist',
+	'Nuclear Nightmare',
+	'Pirate',
+	'Power Corrupted',
+	'Psycho',
+	'Puzzler',
+	'Servitor',
+	'Supernatural Horror',
+	'Temptress',
+	'Terrorist',
+	'Theme Villain',
+	'Thief',
+	'Twisted Genius',
+	'Ultimate Villain',
+	'Vigilante',
+	'Villain with All Your Powers',
+	'Warlock',
+	'Wolf in Sheep\'s Clothing'
+	];
+var places=[
+  'bar',
+  'construction site',
+  'mall',
+  'haunted house',
+  'villain hideout',
+  'government building',
+  'museum',
+  'bomb shelter',
+  'subway tunnel',
+  'spacecraft',
+  'smelting furnace',
+  'dirigible',
+  'high school prom',
+  'theatre',
+  'casino',
+  'candy-making factory',
+  'office',
+  'cornfield',
+  'hospital',
+  'deserted island',
+  'empty office building',
+  'botanical gardens',
+  'church',
+  'meeting of a 12-step program',
+  'morgue or funeral home',
+  'cyberspace',
+  'the Dark Web',
+  'someone\'s home',
+  'embassy',
+  'abandoned warehouse',
+  'moving semi truck',
+  'moon base',
+  'nature preserve',
+  'orbiting satellite',
+  'power plant',
+  'luxury yacht',
+  'cruise ship',
+  'sports arena'
+];
+	</script>
+	</head>
+	<body>
+		<h1>A Simple Adventure Seed</h1>
+		<p>Use foes from:</p>
+		<p><input type="radio" name="foeSrc" value="icons" checked="checked" /> <cite>ICONS Superpowered Roleplaying Game</cite></p>
+		<p><input type="radio" name="foeSrc" value="archetypes" /> <cite>The Super Villain Handbook</cite></p>
+		<p id="debug">&#160;</p>
+		<p id="seedDisplay" style="border:solid 1pt black; margin: 10px; padding:5px;">
+			<!-- line will display here -->&#160;
+		</p>
+		<button onclick="logline()">New Seed</button>
+		<h2>Credits</h2>
+		<ul>
+		<li><cite>ICONS Superpowered Roleplaying</cite> is a trademark of Steve Kenson, published exclusively by Ad Infinitum Adventures. It is used here without permission.</li>
+		<li><cite>The Super Villain Handbook</cite> is by Jason Tondro, published by Fainting Goat Games. It is used here without permission.</li>
+		<li>Hackily coded by John McMullen. Released under Creative Commons attribution license.</li>
+	</body>
+</html>
